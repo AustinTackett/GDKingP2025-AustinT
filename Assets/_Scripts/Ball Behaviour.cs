@@ -10,6 +10,15 @@ public class BallBehaviour : MonoBehaviour
     public float maxSpeed;
     Vector2 targetPosition;
 
+    public GameObject target;
+    public float minLaunchSpeed;
+    public float minTimeToLaunch;
+    public float maxTimeToLaunch;
+    public float cooldown;
+    public bool launching;
+    public float launchDuration;
+    public float timeLastLaunch;
+
     public int secondsToMaxSpeed;
 
     void Start()
@@ -18,7 +27,6 @@ public class BallBehaviour : MonoBehaviour
         targetPosition = getRandomPosition();
         //minSpeed= 0.1f;
         //maxSpeed = 20.0f;
-
     }
 
     void Update()
@@ -52,5 +60,10 @@ public class BallBehaviour : MonoBehaviour
     public float getDifficultyPercentage()
     {
         return Mathf.Clamp01(Time.timeSinceLevelLoad / secondsToMaxSpeed);
+    }
+
+    public void launch()
+    {   
+
     }
 }
