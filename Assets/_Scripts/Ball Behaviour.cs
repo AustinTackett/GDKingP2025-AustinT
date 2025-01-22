@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class BallBehaviour : MonoBehaviour
 {
-    public float minX = -8.81f;
-    public float maxX = 8.8f;
-    public float minY = 4.93f;
-    public float maxY = 4.99f;
+    public float minX;
+    public float maxX;
+    public float minY;
+    public float maxY;
     public float minSpeed;
     public float maxSpeed;
     Vector2 targetPosition;
@@ -14,29 +14,31 @@ public class BallBehaviour : MonoBehaviour
 
     void Start()
     {
-        secondsToMaxSpeed = 30;
+        //secondsToMaxSpeed = 30;
         targetPosition = getRandomPosition();
-        minSpeed= -0.75f;
-        maxSpeed = 2.0f;
+        //minSpeed= 0.1f;
+        //maxSpeed = 20.0f;
 
     }
 
     void Update()
     {
-        Vector2 currentPos = gameObject.GetComponent<Transform>().position;
-
-        if(targetPosition == currentPos)
+        Vector2 currentPos = transform.position;
+        float distance = Vector2.Distance(currentPos, targetPosition);
+        if(distance > 0.1f)
         {
-            float currentSpeed = minSpeed;
+            //float currentSpeed = minSpeed;
+            float currentSpeed = Mathf.Lerp(minSpeed, maxSpeed, getDifficultyPercentage());
+            currentSpeed = currentSpeed * Time.deltaTime;
             Vector2 newPosition = Vector2.MoveTowards(currentPos, targetPosition, currentSpeed);
             transform.position = newPosition;
         } 
         else
         {
-            transform.position = getRandomPosition();
+            targetPosition = getRandomPosition();
         }
 
-        // Debug.Log(getRandomPosition());
+        //Debug.Log(getRandomPosition(s));
     }
 
     public Vector2 getRandomPosition()
@@ -45,5 +47,10 @@ public class BallBehaviour : MonoBehaviour
         float randomY = Random.Range(minY, maxY);
         Vector2 v = new Vector2(randomX, randomY);
         return v;
+    }
+
+    public float getDifficultyPercentage()
+    {
+        return Mathf.Clamp01(Time.timeSinceLevelLoad / secondsToMaxSpeed);
     }
 }
