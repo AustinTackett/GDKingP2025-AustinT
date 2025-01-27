@@ -50,15 +50,17 @@ MonoBehaviour:
   minY: -4.35
   maxY: 4.41
   minSpeed: 0.01
-  maxSpeed: 20
+  maxSpeed: 3
   target: {fileID: 850858535374421585, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
-  minLaunchSpeed: 0
-  minTimeToLaunch: 0
-  maxTimeToLaunch: 0
-  cooldown: 0
+  minLaunchSpeed: 10
+  maxLaunchSpeed: 20
+  minTimeToLaunch: 1
+  maxTimeToLaunch: 3
+  cooldown: 3
   launching: 0
-  launchDuration: 0
+  launchDuration: 1
   timeLastLaunch: 0
+  timeLaunchStart: 0
   secondsToMaxSpeed: 30
 --- !u!212 &8401623947118530101
 SpriteRenderer:

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor;
 
 public class BallBehaviour : MonoBehaviour
 {
@@ -8,43 +9,71 @@ public class BallBehaviour : MonoBehaviour
     public float maxY;
     public float minSpeed;
     public float maxSpeed;
-    Vector2 targetPosition;
+    public Vector2 targetPosition;
 
     public GameObject target;
+    private GameObject pinInstance;
     public float minLaunchSpeed;
+    public float maxLaunchSpeed;
     public float minTimeToLaunch;
     public float maxTimeToLaunch;
     public float cooldown;
     public bool launching;
     public float launchDuration;
     public float timeLastLaunch;
+    public float timeLaunchStart;
 
     public int secondsToMaxSpeed;
 
     void Start()
     {
-        //secondsToMaxSpeed = 30;
         targetPosition = getRandomPosition();
-        //minSpeed= 0.1f;
-        //maxSpeed = 20.0f;
+        pinInstance = GameObject.FindGameObjectWithTag("Pin");
     }
 
     void Update()
     {
         Vector2 currentPos = transform.position;
-        float distance = Vector2.Distance(currentPos, targetPosition);
+        if (onCooldown() == false)
+        {
+            if (launching)
+            {
+                float currentLaunchTime = Time.time - timeLaunchStart;
+                if (currentLaunchTime > launchDuration)
+                {
+                    startCooldown();
+                } else {
+                    launch();
+                }
+            }
+        }
+        else
+        {
+            launch();
+        }
+
+        float distance = Vector2.Distance((Vector2) currentPos, targetPosition);
         if(distance > 0.1f)
         {
-            //float currentSpeed = minSpeed;
-            float currentSpeed = Mathf.Lerp(minSpeed, maxSpeed, getDifficultyPercentage());
+            float currentSpeed;
+            if(launching == true)
+            {
+                currentSpeed = Mathf.Lerp(minLaunchSpeed, maxLaunchSpeed, getDifficultyPercentage());
+            } else {
+                currentSpeed = Mathf.Lerp(minSpeed, maxSpeed, getDifficultyPercentage());
+            }
             currentSpeed = currentSpeed * Time.deltaTime;
             Vector2 newPosition = Vector2.MoveTowards(currentPos, targetPosition, currentSpeed);
             transform.position = newPosition;
-        } 
-        else
-        {
+        } else {
+            if (launching == true)
+            {
+                startCooldown();
+            }
             targetPosition = getRandomPosition();
         }
+
+        
 
         //Debug.Log(getRandomPosition(s));
     }
@@ -64,6 +93,35 @@ public class BallBehaviour : MonoBehaviour
 
     public void launch()
     {   
+        //targetPosition = target.transform.position;
+        targetPosition = pinInstance.transform.position;
 
+        if (launching == false) 
+        {
+            timeLaunchStart = Time.time;
+            launching = true;
+        }
+
+        // random cooldown 
+        cooldown = Random.Range(1, 5);
+    }
+
+    public bool onCooldown()
+    {
+        bool onCooldown = true;
+        float timeSinceLastLaunch = Time.time - timeLastLaunch;
+
+        if(timeSinceLastLaunch > cooldown)
+        {
+            onCooldown = false;
+        }
+
+        return onCooldown;
+    }
+
+    public void startCooldown()
+    {
+        timeLastLaunch = Time.time;
+        launching = false;
     }
 }
