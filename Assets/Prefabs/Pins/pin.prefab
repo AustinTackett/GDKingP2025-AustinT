@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600734722600089005}
+  - component: {fileID: 8084360919974678146}
   - component: {fileID: 2398456743007569595}
   m_Layer: 0
   m_Name: pin
@@ -32,6 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8084360919974678146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850858535374421585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b754773e7e93d9544aa5ffd317672fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 12
+  newPosition: {x: 0, y: 0}
+  mousePosG: {x: 0, y: 0, z: 0}
 --- !u!212 &2398456743007569595
 SpriteRenderer:
   m_ObjectHideFlags: 0
