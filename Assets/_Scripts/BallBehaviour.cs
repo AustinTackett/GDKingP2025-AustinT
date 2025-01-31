@@ -31,7 +31,7 @@ public class BallBehaviour : MonoBehaviour
         pinInstance = GameObject.FindGameObjectWithTag("Pin");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector2 currentPos = transform.position;
         if (onCooldown() == false)
@@ -123,5 +123,10 @@ public class BallBehaviour : MonoBehaviour
     {
         timeLastLaunch = Time.time;
         launching = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(this + " Collided with: ");
     }
 }
