@@ -29,7 +29,7 @@ public class BallBehaviour : MonoBehaviour
 
     public void Start()
     {
-        //targetPosition = getRandomPosition();
+        targetPosition = getRandomPosition();
         target = GameObject.FindGameObjectWithTag("Pin");
         //initialPosition();
     }

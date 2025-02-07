@@ -47,7 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b754773e7e93d9544aa5ffd317672fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  currentSpeed: 0
+  dashSpeed: 5
+  dashDuration: 2
+  timeDashStart: 0
+  dashing: 0
+  baseSpeed: 2
+  timeLastDashEnded: 0
+  cooldownRate: 5
+  cooldown: 0
   newPosition: {x: 0, y: 0}
   mousePosG: {x: 0, y: 0, z: 0}
 --- !u!212 &2398456743007569595
@@ -279,7 +287,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850858535374421585}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
