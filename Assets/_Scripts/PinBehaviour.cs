@@ -9,7 +9,7 @@ public class PinBehaviour : MonoBehaviour
     public bool dashing;
     public float baseSpeed = 2.0f;
     public float timeLastDashEnded;
-    public float cooldownRate = 5.0f;
+    public static float cooldownRate = 5.0f;
     public static float cooldown;
     public Vector2 newPosition;
     public Vector3 mousePosG;
