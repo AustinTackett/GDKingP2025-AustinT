@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 294315104}
   - component: {fileID: 294315106}
   - component: {fileID: 294315105}
-  - component: {fileID: 294315107}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -317,18 +316,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294315103}
   m_CullTransparentMesh: 1
---- !u!114 &294315107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294315103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cc7deb46196bdc408f4ef5f7753eada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &304631859
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +503,6 @@ RectTransform:
   - {fileID: 1844673621}
   - {fileID: 1496150877}
   - {fileID: 462798365}
-  - {fileID: 2101534581}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -966,8 +952,9 @@ GameObject:
   - component: {fileID: 462798368}
   - component: {fileID: 462798367}
   - component: {fileID: 462798366}
+  - component: {fileID: 462798369}
   m_Layer: 5
-  m_Name: Button
+  m_Name: DashIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,6 +972,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2101534581}
   - {fileID: 294315104}
   m_Father: {fileID: 317150537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1075,6 +1063,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462798364}
   m_CullTransparentMesh: 1
+--- !u!114 &462798369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462798364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc7deb46196bdc408f4ef5f7753eada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  cooldownRate: 0
+  fill: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,7 +1644,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 8130018617286634678, guid: ff39f2f7e7eb0e54c8be10a972072e8b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.5330188, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2742,7 +2745,7 @@ GameObject:
   - component: {fileID: 2101534583}
   - component: {fileID: 2101534582}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Overlay
   m_TagString: Overlay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2755,16 +2758,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101534580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 317150537}
+  m_Father: {fileID: 462798365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -326.69, y: -100}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2101534582
