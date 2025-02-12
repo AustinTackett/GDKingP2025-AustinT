@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuBehaviour : MonoBehaviour
 {
@@ -17,5 +18,13 @@ public class MenuBehaviour : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
     }
 
-    
+    public void goToMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    public void restartGameScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
