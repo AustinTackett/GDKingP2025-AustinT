@@ -1225,8 +1225,8 @@ GameObject:
   m_Component:
   - component: {fileID: 598880187}
   - component: {fileID: 598880190}
-  - component: {fileID: 598880189}
   - component: {fileID: 598880188}
+  - component: {fileID: 598880189}
   m_Layer: 0
   m_Name: Arena2Border_0
   m_TagString: Wall
@@ -1243,7 +1243,7 @@ Transform:
   m_GameObject: {fileID: 598880186}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1898,7 +1898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1600734722600089005, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1600734722600089005, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
       propertyPath: m_LocalRotation.w
