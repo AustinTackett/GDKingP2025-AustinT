@@ -12,7 +12,6 @@ public class BallBehaviour : MonoBehaviour
     public Vector2 targetPosition;
 
     public GameObject target;
-    //private GameObject pinInstance;
     public float minLaunchSpeed;
     public float maxLaunchSpeed;
     public float minTimeToLaunch;
@@ -27,8 +26,17 @@ public class BallBehaviour : MonoBehaviour
     Rigidbody2D body;
     public bool rerouting;
 
+    public void setBounds(float minX, float maxX, float minY, float maxY)
+    {
+        this.minX= minX;
+        this.maxX= maxX;
+        this.minY = minY;
+        this.maxY = maxY;
+    }
+
     public void Start()
     {
+        initialPosition();
         targetPosition = getRandomPosition();
         target = GameObject.FindGameObjectWithTag("Pin");
         //initialPosition();
@@ -163,5 +171,10 @@ public class BallBehaviour : MonoBehaviour
     {
         timeLastLaunch = Time.time;
         launching = false;
+    }
+
+    public void setTarget(GameObject pin)
+    {
+        target = pin;
     }
 }

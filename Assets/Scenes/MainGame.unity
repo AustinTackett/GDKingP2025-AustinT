@@ -1090,6 +1090,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1215,6 +1216,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0127f9b20e53c81439fb5cfa20088eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballVariants:
+  - {fileID: 6782223747004298975, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
+  - {fileID: 850858535374421585, guid: 52b42e02682bc2046ae98730ab01fdf0, type: 3}
+  - {fileID: 8996781113969905008, guid: cb35eb185b3fd4b43880ede35b12acc5, type: 3}
+  - {fileID: 1507407741741325185, guid: 401585863e791f74984ce79bdc97fb5e, type: 3}
+  - {fileID: 2540221419758704055, guid: 8efc1d56f0dd84e409704f5c60e7ba0a, type: 3}
+  - {fileID: 6724971367299961863, guid: 51ad92ee0eb18154aa660139ab1630ea, type: 3}
+  - {fileID: 6210969150970323571, guid: 80d1de066ffc8d84e85612d616a85b45, type: 3}
+  - {fileID: 3210798886507605363, guid: 865dfa6e26b7b8a4bbd43d3236954dff, type: 3}
+  - {fileID: 6906596293348952212, guid: e1cfccfa993702f49bb812eb9815c709, type: 3}
+  - {fileID: 8709630865917765828, guid: 716d3d479a3c91e479014f0ad550004e, type: 3}
+  targetObject: {fileID: 810089890}
+  startTime: 1
+  spawnRatio: 6
+  minX: -3.81
+  maxX: 3.81
+  minY: -4
+  maxY: 4
 --- !u!1 &598880186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,16 +1843,32 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3592133695821419805, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
+      propertyPath: maxX
+      value: 3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592133695821419805, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
+      propertyPath: maxY
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592133695821419805, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
+      propertyPath: minX
+      value: -3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592133695821419805, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
+      propertyPath: minY
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592133695821419805, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4892990003099417891, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.22
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4892990003099417891, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.92500377
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: 4892990003099417891, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1858,6 +1905,10 @@ PrefabInstance:
     - target: {fileID: 6782223747004298975, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
       propertyPath: m_Name
       value: ball-anime
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782223747004298975, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1941,6 +1992,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
+--- !u!1 &810089890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 850858535374421585, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
+  m_PrefabInstance: {fileID: 637978878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1264197169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,11 +2487,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6999390048532645516, guid: cb35eb185b3fd4b43880ede35b12acc5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.03
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 6999390048532645516, guid: cb35eb185b3fd4b43880ede35b12acc5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.03
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6999390048532645516, guid: cb35eb185b3fd4b43880ede35b12acc5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2472,6 +2528,10 @@ PrefabInstance:
     - target: {fileID: 8996781113969905008, guid: cb35eb185b3fd4b43880ede35b12acc5, type: 3}
       propertyPath: m_Name
       value: ball-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996781113969905008, guid: cb35eb185b3fd4b43880ede35b12acc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2610,6 +2670,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ball-steak
       objectReference: {fileID: 0}
+    - target: {fileID: 8709630865917765828, guid: 716d3d479a3c91e479014f0ad550004e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2666,6 +2730,10 @@ PrefabInstance:
     - target: {fileID: 6906596293348952212, guid: e1cfccfa993702f49bb812eb9815c709, type: 3}
       propertyPath: m_Name
       value: ball-japan
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906596293348952212, guid: e1cfccfa993702f49bb812eb9815c709, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
