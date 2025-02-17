@@ -23,6 +23,12 @@ public class MenuBehaviour : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
+    public void goToCharacterSelection()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterSelection");
+    }
+
+
     public void restartGameScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

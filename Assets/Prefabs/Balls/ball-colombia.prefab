@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3592133695821419805, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
       propertyPath: maxSpeed
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3592133695821419805, guid: 574e159c198eb21468efd65f480dc1bf, type: 3}
       propertyPath: maxLaunchSpeed
