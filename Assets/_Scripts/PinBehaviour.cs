@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PinBehaviour : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PinBehaviour : MonoBehaviour
     public float timeLastDashEnded;
     public static float cooldownRate = 5.0f;
     public static float cooldown;
+    public AudioSource[] audioSources;
     public Vector2 newPosition;
     public Vector3 mousePosG;
     Camera cam;
@@ -19,6 +21,7 @@ public class PinBehaviour : MonoBehaviour
     {
         currentSpeed = baseSpeed;
         cam = Camera.main;
+        audioSources = GetComponents<AudioSource>();
     }
 
 
@@ -54,6 +57,11 @@ public class PinBehaviour : MonoBehaviour
                 dashing = true;
                 currentSpeed = dashSpeed;
                 timeDashStart = Time.time;
+                if (audioSources[1].isPlaying)
+                {
+                    audioSources[1].Stop();
+                }
+                audioSources[1].Play();
             }
         }       
     }
@@ -61,10 +69,17 @@ public class PinBehaviour : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string collided = collision.gameObject.tag;
-        Debug.Log("Collided with " + collided);
         if (collided == "Ball" || collided == "Wall")
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverMenu");
+            Debug.Log("Game Over");
+            StartCoroutine(WaitForSoundAndTransition());
         }
+    }
+
+    private IEnumerator WaitForSoundAndTransition()
+    {
+        audioSources[0].Play();
+        yield return new WaitForSeconds(audioSources[0].clip.length);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverMenu");
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MenuBehaviour : MonoBehaviour
 {
@@ -15,7 +16,15 @@ public class MenuBehaviour : MonoBehaviour
 
     public void goToGame() 
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
+        StartCoroutine(WaitForSoundAndTransition("MainGame"));
+    }
+
+    public IEnumerator WaitForSoundAndTransition(string sceneName)
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
+        yield return new WaitForSeconds(audioSource.clip.length);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 
     public void goToMenu()
