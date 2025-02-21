@@ -4,10 +4,13 @@ using UnityEngine;
 public class TimerBehaviour : MonoBehaviour
 {
     private float timer;
+    private float timeOfStart;
     private TextMeshProUGUI textfield;
 
     void Start()
     {
+        timeOfStart = Time.time;
+
         textfield = GetComponent<TextMeshProUGUI>();
 
         if (textfield == null) 
@@ -18,8 +21,7 @@ public class TimerBehaviour : MonoBehaviour
 
     void Update()
     {
-        timer = Time.time;
-        
+        timer = Time.time - timeOfStart;
 
         if (textfield != null)
         {
