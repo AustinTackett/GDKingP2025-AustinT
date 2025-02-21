@@ -7,6 +7,7 @@ public class SpawningBehaviour : MonoBehaviour
     GameObject newObject;
     public float startTime;
     public float spawnRatio = 1.0f;
+    public PinSO PinsDB;
 
     public float minX;
     public float maxX;
@@ -15,6 +16,7 @@ public class SpawningBehaviour : MonoBehaviour
 
     void Start()
     {
+        spawnPin();
         spawnBall();
     }
 
@@ -22,7 +24,7 @@ public class SpawningBehaviour : MonoBehaviour
     {
         float currentTime = Time.time;
         float timeElapsed = currentTime - startTime;
-        Debug.Log(timeElapsed);
+        //Debug.Log(timeElapsed);
         if (timeElapsed > spawnRatio)
         {
             spawnBall();
@@ -42,5 +44,15 @@ public class SpawningBehaviour : MonoBehaviour
             ballBehaviour.initialPosition();
         }
         startTime = Time.time;
+    }
+
+    void spawnPin()
+    {
+        Debug.Log("Spawn pin");
+        targetObject = Instantiate(
+            PinsDB.getPin(CharacterManager.selection).prefab,
+            Vector3.zero,
+            Quaternion.identity
+        );
     }
 }

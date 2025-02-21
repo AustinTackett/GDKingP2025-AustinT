@@ -8,6 +8,11 @@ public class CharacterManager : MonoBehaviour
     public SpriteRenderer sprite;
     public TMP_Text nameLabel;
 
+    public void Start()
+    {
+        updateCharacter();
+    }
+
     void updateCharacter()
     {
         Pin current = pinsDB.getPin(selection);
@@ -21,6 +26,10 @@ public class CharacterManager : MonoBehaviour
         if (selection < numberPins-1)
         {
             selection += 1;
+        } 
+        else 
+        {
+            selection = 0;
         }
 
         updateCharacter();
@@ -32,6 +41,10 @@ public class CharacterManager : MonoBehaviour
         {
             selection -= 1;
         
+        }
+        else 
+        {
+            selection = pinsDB.count() - 1;
         }
         updateCharacter();
     }

@@ -52,7 +52,7 @@ MonoBehaviour:
   dashDuration: 2
   timeDashStart: 0
   dashing: 0
-  baseSpeed: 2
+  baseSpeed: 1
   timeLastDashEnded: 0
   newPosition: {x: 0, y: 0}
   mousePosG: {x: 0, y: 0, z: 0}
