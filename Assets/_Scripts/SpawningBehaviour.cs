@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class SpawningBehaviour : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class SpawningBehaviour : MonoBehaviour
     public float startTime;
     public float spawnRatio = 1.0f;
     public PinSO PinsDB;
+
+    public event EventHandler increaseScore;
 
     public float minX;
     public float maxX;
@@ -24,7 +27,6 @@ public class SpawningBehaviour : MonoBehaviour
     {
         float currentTime = Time.time;
         float timeElapsed = currentTime - startTime;
-        //Debug.Log(timeElapsed);
         if (timeElapsed > spawnRatio)
         {
             spawnBall();
@@ -36,7 +38,7 @@ public class SpawningBehaviour : MonoBehaviour
         int numVariants = ballVariants.Length;
         if (numVariants > 0)
         {
-            int selection = Random.Range(0, numVariants);
+            int selection = UnityEngine.Random.Range(0, numVariants);
             newObject = Instantiate(ballVariants[selection], new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
             BallBehaviour ballBehaviour = newObject.GetComponent<BallBehaviour>();
             ballBehaviour.setBounds(minX, maxX, minY, maxY);
@@ -48,11 +50,16 @@ public class SpawningBehaviour : MonoBehaviour
 
     void spawnPin()
     {
-        Debug.Log("Spawn pin");
+        //Debug.Log("Spawn pin");
         targetObject = Instantiate(
             PinsDB.getPin(CharacterManager.selection).prefab,
             Vector3.zero,
             Quaternion.identity
         );
+    }
+
+    private void onIncreaseScore()
+    {
+        increaseScore?.Invoke(this, EventArgs.Empty);
     }
 }
