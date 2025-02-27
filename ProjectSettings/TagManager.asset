@@ -8,6 +8,8 @@ TagManager:
   - Ball
   - Wall
   - Overlay
+  - ScorePanel
+  - BallSpawner
   layers:
   - Default
   - TransparentFX

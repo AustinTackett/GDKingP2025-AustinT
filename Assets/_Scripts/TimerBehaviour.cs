@@ -27,7 +27,7 @@ public class TimerBehaviour : MonoBehaviour
         {
             int minutes = Mathf.FloorToInt(timer/ 60);
             int seconds = Mathf.FloorToInt(timer % 60);
-            string timeLabel = string.Format("<color=black>Time: <color=#0080ff>{0:00}<color=black>:<color=#0080ff>{1:00}", minutes, seconds);
+            string timeLabel = string.Format("<color=black>Time: <color=black>{0:00}<color=black>:<color=black>{1:00}", minutes, seconds);
             textfield.text = timeLabel;
         }
         

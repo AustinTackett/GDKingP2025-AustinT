@@ -30,6 +30,8 @@ public class SpawningBehaviour : MonoBehaviour
         if (timeElapsed > spawnRatio)
         {
             spawnBall();
+            increaseScore?.Invoke(this, EventArgs.Empty);
+            Debug.Log("Spawning Ball");
         }
     }
 
@@ -50,16 +52,10 @@ public class SpawningBehaviour : MonoBehaviour
 
     void spawnPin()
     {
-        //Debug.Log("Spawn pin");
         targetObject = Instantiate(
             PinsDB.getPin(CharacterManager.selection).prefab,
             Vector3.zero,
             Quaternion.identity
         );
-    }
-
-    private void onIncreaseScore()
-    {
-        increaseScore?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -24,7 +24,6 @@ public class PinBehaviour : MonoBehaviour
         audioSources = GetComponents<AudioSource>();
     }
 
-
     void Update()
     {
         Dash();

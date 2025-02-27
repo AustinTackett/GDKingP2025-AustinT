@@ -336,10 +336,11 @@ Transform:
   m_GameObject: {fileID: 304631859}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -0.04, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 598880187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &317150533
@@ -460,7 +461,7 @@ GameObject:
   - component: {fileID: 400419013}
   - component: {fileID: 400419012}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: ScorePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1096,7 +1097,7 @@ GameObject:
   - component: {fileID: 572842140}
   m_Layer: 0
   m_Name: BallSpawner
-  m_TagString: Untagged
+  m_TagString: BallSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1175,11 +1176,11 @@ Transform:
   m_GameObject: {fileID: 598880186}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -0.04, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 304631861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &598880188
 Rigidbody2D:
@@ -2085,6 +2086,7 @@ GameObject:
   - component: {fileID: 1497008235}
   - component: {fileID: 1497008237}
   - component: {fileID: 1497008236}
+  - component: {fileID: 1497008238}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2131,7 +2133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ANOTHER TEXT
+  m_text: 'Score: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -2210,6 +2212,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497008234}
   m_CullTransparentMesh: 1
+--- !u!114 &1497008238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497008234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b9e0c8ec5765640bf45647a9b07c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1844673620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,6 +2384,5 @@ SceneRoots:
   - {fileID: 317150537}
   - {fileID: 1264197172}
   - {fileID: 304631861}
-  - {fileID: 598880187}
   - {fileID: 860146505}
   - {fileID: 572842141}
