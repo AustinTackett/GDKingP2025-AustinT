@@ -4,16 +4,6 @@ using System.Collections;
 
 public class MenuBehaviour : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void goToGame() 
     {
         StartCoroutine(WaitForSoundAndTransition("MainGame"));
@@ -24,17 +14,17 @@ public class MenuBehaviour : MonoBehaviour
         AudioSource audioSource = GetComponent<AudioSource>();
         audioSource.Play();
         yield return new WaitForSeconds(audioSource.clip.length);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void goToMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        StartCoroutine(WaitForSoundAndTransition("MainMenu"));
     }
 
     public void goToCharacterSelection()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterSelection");
+        StartCoroutine(WaitForSoundAndTransition("CharacterSelection"));
     }
 
 

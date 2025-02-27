@@ -50,12 +50,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 0
-  dashSpeed: 5
-  dashDuration: 2
+  dashSpeed: 2
+  dashDuration: 0.1
   timeDashStart: 0
   dashing: 0
-  baseSpeed: 1
+  baseSpeed: 0.5
   timeLastDashEnded: 0
+  audioSources: []
   newPosition: {x: 0, y: 0}
   mousePosG: {x: 0, y: 0, z: 0}
 --- !u!212 &2398456743007569595

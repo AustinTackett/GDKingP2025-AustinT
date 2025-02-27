@@ -32,6 +32,9 @@ public class CharacterManager : MonoBehaviour
             selection = 0;
         }
 
+        AudioSource nextSound = GetComponent<AudioSource>();
+        nextSound.Play();
+
         updateCharacter();
     }
 
@@ -46,6 +49,10 @@ public class CharacterManager : MonoBehaviour
         {
             selection = pinsDB.count() - 1;
         }
+
+        AudioSource previousSound = GetComponent<AudioSource>();
+        previousSound.Play();
+
         updateCharacter();
     }
 }

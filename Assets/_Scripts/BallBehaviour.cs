@@ -39,7 +39,6 @@ public class BallBehaviour : MonoBehaviour
         initialPosition();
         targetPosition = getRandomPosition();
         target = GameObject.FindGameObjectWithTag("Pin");
-        //initialPosition();
     }
 
     public void FixedUpdate()
