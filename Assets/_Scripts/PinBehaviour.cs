@@ -76,7 +76,7 @@ public class PinBehaviour : MonoBehaviour
 
         if (collided == "Ball" || collided == "Wall")
         {
-            Debug.Log("Game Over");
+            //Debug.Log("Game Over");
             StartCoroutine(WaitForSoundAndTransition());
         }
 
