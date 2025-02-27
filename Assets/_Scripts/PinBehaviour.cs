@@ -22,6 +22,10 @@ public class PinBehaviour : MonoBehaviour
         currentSpeed = baseSpeed;
         cam = Camera.main;
         audioSources = GetComponents<AudioSource>();
+
+        // Do keep any previous dash data if game is played multiple times.
+        dashing = false;
+        cooldown = 0;
     }
 
     void Update()
@@ -52,7 +56,7 @@ public class PinBehaviour : MonoBehaviour
                 cooldown = 0;
             }
 
-            if (Input.GetMouseButton(0) == true && cooldown <= 0) {
+            if (Input.GetMouseButton(0) == true && cooldown == 0) {
                 dashing = true;
                 currentSpeed = dashSpeed;
                 timeDashStart = Time.time;
