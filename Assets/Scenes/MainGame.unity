@@ -1141,12 +1141,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572842139}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14520882, y: -0.38325447, z: 9.978896}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 246.15466, y: -25.248898, z: -3601.4602}
+  m_LocalScale: {x: 45.006382, y: 45.006382, z: 45.006382}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1496150877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598880186
 GameObject:
@@ -2043,7 +2043,7 @@ GameObject:
   - component: {fileID: 1496150878}
   - component: {fileID: 1496150881}
   m_Layer: 5
-  m_Name: InvinsibleIcon
+  m_Name: InvincibleIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2063,6 +2063,7 @@ RectTransform:
   m_Children:
   - {fileID: 1412503416}
   - {fileID: 416561025}
+  - {fileID: 572842141}
   m_Father: {fileID: 317150537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2477,4 +2478,3 @@ SceneRoots:
   - {fileID: 1264197172}
   - {fileID: 304631861}
   - {fileID: 860146505}
-  - {fileID: 572842141}

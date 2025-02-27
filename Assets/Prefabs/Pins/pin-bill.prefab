@@ -56,6 +56,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4182931856164643842, guid: 7755ed39ad1417a4b9fdbf267b7954f0, type: 3}
+    - target: {fileID: 2398456743007569595, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398456743007569595, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398456743007569595, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398456743007569595, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3526151952699258201, guid: 43dc41aa3e60122459cab7c0b60b1cbf, type: 3}
       propertyPath: m_Points.m_Paths.Array.size
       value: 1

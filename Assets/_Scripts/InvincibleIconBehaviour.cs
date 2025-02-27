@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class InvinsibleIconBehaviour : MonoBehaviour
+public class InvincibleIconBehaviour : MonoBehaviour
 {
     TextMeshProUGUI label;
     public float cooldown;
@@ -23,12 +23,12 @@ public class InvinsibleIconBehaviour : MonoBehaviour
         }
         overlay.fillAmount = 0.0f;
 
-        cooldownRate = PinBehaviour.cooldownRate;
+        cooldownRate = PinBehaviour.invincibleCooldownRate;
     }
 
     void Update()
     {
-        cooldown = PinBehaviour.cooldown;
+        cooldown = PinBehaviour.invincibleCooldown;
 
         if (cooldown > 0.0)
         {

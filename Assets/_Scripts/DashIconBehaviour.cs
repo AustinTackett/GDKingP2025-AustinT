@@ -23,12 +23,12 @@ public class DashIconBehaviour : MonoBehaviour
         }
         overlay.fillAmount = 0.0f;
 
-        cooldownRate = PinBehaviour.cooldownRate;
+        cooldownRate = PinBehaviour.dashCooldownRate;
     }
 
     void Update()
     {
-        cooldown = PinBehaviour.cooldown;
+        cooldown = PinBehaviour.dashCooldown;
 
         if (cooldown > 0.0)
         {

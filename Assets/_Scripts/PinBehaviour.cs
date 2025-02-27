@@ -3,34 +3,48 @@ using System.Collections;
 
 public class PinBehaviour : MonoBehaviour
 {
-    public float currentSpeed;
+    private float currentSpeed;
+    public float baseSpeed = 2.0f;
+    
     public float dashSpeed = 5.0f;
     public float dashDuration = 2.0f;
-    public float timeDashStart;
-    public bool dashing;
-    public float baseSpeed = 2.0f;
-    public float timeLastDashEnded;
-    public static float cooldownRate = 5.0f;
-    public static float cooldown;
-    public AudioSource[] audioSources;
+    private float timeDashStart;
+    private float timeLastDashEnded;
+    private bool dashing;
+    public static float dashCooldownRate = 5.0f;
+    public static float dashCooldown;
+    
+    public float invincibleDuration = 1.5f;
+    private float timeInvincibleStart;
+    private float timeLastInvincibleEnded;
+    private bool invincible;
+    public static float invincibleCooldownRate = 10.0f;
+    public static float invincibleCooldown;
+
+    private SpriteRenderer sprite;
+    private AudioSource[] audioSources;
     public Vector2 newPosition;
     public Vector3 mousePosG;
-    Camera cam;
+    private Camera cam;
 
     void Start()
     {
         currentSpeed = baseSpeed;
         cam = Camera.main;
         audioSources = GetComponents<AudioSource>();
+        sprite = GetComponent<SpriteRenderer>();
 
-        // Do keep any previous dash data if game is played multiple times.
+        // Do keep any previous dash or invincible data if game is played multiple times.
         dashing = false;
-        cooldown = 0;
+        dashCooldown = 0;
+        invincible = false;
+        invincibleCooldown = 0;
     }
 
     void Update()
     {
         Dash();
+        Invincible();
 
         mousePosG = cam.ScreenToWorldPoint(Input.mousePosition);
         newPosition = Vector2.MoveTowards(transform.position, mousePosG, currentSpeed * Time.fixedDeltaTime);
@@ -46,17 +60,17 @@ public class PinBehaviour : MonoBehaviour
                 dashing = false;
                 currentSpeed = baseSpeed;
                 timeLastDashEnded = Time.time;
-                cooldown = cooldownRate;
+                dashCooldown = dashCooldownRate;
             }
         } else {
-            cooldown = cooldown - Time.deltaTime;
+            dashCooldown = dashCooldown - Time.deltaTime;
 
-            if (cooldown < 0)
+            if (dashCooldown < 0)
             {
-                cooldown = 0;
+                dashCooldown = 0;
             }
 
-            if (Input.GetMouseButton(0) == true && cooldown == 0) {
+            if (Input.GetMouseButton(0) == true && dashCooldown == 0) {
                 dashing = true;
                 currentSpeed = dashSpeed;
                 timeDashStart = Time.time;
@@ -69,17 +83,52 @@ public class PinBehaviour : MonoBehaviour
         }       
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Invincible(){
+        if (invincible == true)
+        {
+            
+            float howLong = Time.time - timeInvincibleStart;
+            if (howLong > invincibleDuration)
+            {
+                invincible = false;
+                timeLastInvincibleEnded = Time.time;
+                invincibleCooldown = invincibleCooldownRate;
+            }
+        } else {
+            // Set to original colors
+            sprite.color = UnityEngine.Color.white;
+            
+            invincibleCooldown = invincibleCooldown - Time.deltaTime;
+
+            if (invincibleCooldown < 0)
+            {
+                invincibleCooldown = 0;
+            }
+
+            if (Input.GetKeyDown("space") == true && invincibleCooldown == 0) {
+                invincible = true;
+                timeInvincibleStart = Time.time;
+
+                // Give pin a blueish hint
+                sprite.color = new Color(121/255, 235/255, 255/255);
+                if (audioSources[1].isPlaying)
+                {
+                    audioSources[1].Stop();
+                }
+                audioSources[1].Play();
+            }
+        }       
+    }
+
+    // We may be invincible when we first make contact, so lets check every frame for collisions just in case invincibility goes away
+    private void OnCollisionStay2D(Collision2D collision)
     {
         string collided = collision.gameObject.tag;
-        Debug.Log(collided);
 
-        if (collided == "Ball" || collided == "Wall")
+        if ( (collided == "Ball" || collided == "Wall") && !invincible)
         {
-            //Debug.Log("Game Over");
             StartCoroutine(WaitForSoundAndTransition());
         }
-
     }
 
     private IEnumerator WaitForSoundAndTransition()
