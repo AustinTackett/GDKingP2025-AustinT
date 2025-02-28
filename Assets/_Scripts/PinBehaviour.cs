@@ -74,7 +74,7 @@ public class PinBehaviour : MonoBehaviour
                 dashing = true;
                 currentSpeed = dashSpeed;
                 timeDashStart = Time.time;
-                if (audioSources[1].isPlaying)
+                if (!audioSources[1].isPlaying)
                 {
                     audioSources[1].Stop();
                 }
@@ -111,11 +111,11 @@ public class PinBehaviour : MonoBehaviour
 
                 // Give pin a blueish hint
                 sprite.color = new Color(121/255, 235/255, 255/255);
-                if (audioSources[1].isPlaying)
+                if (audioSources[2].isPlaying)
                 {
-                    audioSources[1].Stop();
+                    audioSources[2].Stop();
                 }
-                audioSources[1].Play();
+                audioSources[2].Play();
             }
         }       
     }
@@ -133,7 +133,10 @@ public class PinBehaviour : MonoBehaviour
 
     private IEnumerator WaitForSoundAndTransition()
     {
-        audioSources[0].Play();
+        if (!audioSources[0].isPlaying)
+        {
+            audioSources[0].Play();
+        }
         yield return new WaitForSeconds(audioSources[0].clip.length);
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverMenu");
     }
