@@ -21,11 +21,19 @@ public class PinBehaviour : MonoBehaviour
     public static float invincibleCooldownRate = 10.0f;
     public static float invincibleCooldown;
 
+    private bool dead = false;
+
+    private Rigidbody2D rigidbody;
     private SpriteRenderer sprite;
     private AudioSource[] audioSources;
     public Vector2 newPosition;
     public Vector3 mousePosG;
     private Camera cam;
+
+    void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
@@ -43,9 +51,11 @@ public class PinBehaviour : MonoBehaviour
 
     void Update()
     {
+        if(dead) return;
+        
         Dash();
         Invincible();
-
+        
         mousePosG = cam.ScreenToWorldPoint(Input.mousePosition);
         newPosition = Vector2.MoveTowards(transform.position, mousePosG, currentSpeed * Time.fixedDeltaTime);
         transform.position = newPosition;
@@ -127,6 +137,7 @@ public class PinBehaviour : MonoBehaviour
 
         if ( (collided == "Ball" || collided == "Wall") && !invincible)
         {
+            dead = true;
             StartCoroutine(WaitForSoundAndTransition());
         }
     }
