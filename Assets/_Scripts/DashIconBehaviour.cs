@@ -22,7 +22,6 @@ public class DashIconBehaviour : MonoBehaviour
             }
         }
         overlay.fillAmount = 0.0f;
-
         cooldownRate = PinBehaviour.dashCooldownRate;
     }
 

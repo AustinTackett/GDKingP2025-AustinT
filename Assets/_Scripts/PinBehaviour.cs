@@ -22,6 +22,8 @@ public class PinBehaviour : MonoBehaviour
     public static float invincibleCooldown;
 
     private bool dead = false;
+    private bool invincibleKeyPressed = false;
+    private bool dashKeyPressed = false;
 
     private SpriteRenderer sprite;
     private AudioSource[] audioSources;
@@ -32,7 +34,9 @@ public class PinBehaviour : MonoBehaviour
     void Start()
     {
         dead = false;
+        invincibleKeyPressed = false;
         currentSpeed = baseSpeed;
+        dashKeyPressed = false;
         cam = Camera.main;
         audioSources = GetComponents<AudioSource>();
         sprite = GetComponent<SpriteRenderer>();
@@ -42,6 +46,19 @@ public class PinBehaviour : MonoBehaviour
         dashCooldown = 0;
         invincible = false;
         invincibleCooldown = 0;
+    }
+
+    void Update()
+    {
+        // Set flag if key press happens
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            invincibleKeyPressed = true;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            dashKeyPressed = true;
+        }
     }
 
     void FixedUpdate()
@@ -75,7 +92,8 @@ public class PinBehaviour : MonoBehaviour
                 dashCooldown = 0;
             }
 
-            if (Input.GetMouseButton(0) == true && dashCooldown == 0) {
+            if (dashKeyPressed && dashCooldown <= 0) {
+                dashKeyPressed = false;
                 dashing = true;
                 currentSpeed = dashSpeed;
                 timeDashStart = Time.time;
@@ -110,7 +128,8 @@ public class PinBehaviour : MonoBehaviour
                 invincibleCooldown = 0;
             }
 
-            if (Input.GetKeyDown("space") == true && invincibleCooldown == 0) {
+            if (invincibleKeyPressed  && invincibleCooldown <= 0) {
+                invincibleKeyPressed = false;
                 invincible = true;
                 timeInvincibleStart = Time.time;
 
