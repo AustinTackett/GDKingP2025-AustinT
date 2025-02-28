@@ -49,10 +49,10 @@ public class PinBehaviour : MonoBehaviour
         invincibleCooldown = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(dead) return;
-        
+
         Dash();
         Invincible();
         

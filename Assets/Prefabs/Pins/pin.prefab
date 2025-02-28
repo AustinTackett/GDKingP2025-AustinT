@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b754773e7e93d9544aa5ffd317672fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 0.7
-  dashSpeed: 2
-  dashDuration: 0.1
+  baseSpeed: 4
+  dashSpeed: 10
+  dashDuration: 0.2
   invincibleDuration: 1.5
   newPosition: {x: 0, y: 0}
   mousePosG: {x: 0, y: 0, z: 0}
