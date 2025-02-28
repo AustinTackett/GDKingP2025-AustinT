@@ -23,20 +23,15 @@ public class PinBehaviour : MonoBehaviour
 
     private bool dead = false;
 
-    private Rigidbody2D rigidbody;
     private SpriteRenderer sprite;
     private AudioSource[] audioSources;
     public Vector2 newPosition;
     public Vector3 mousePosG;
     private Camera cam;
 
-    void Awake()
-    {
-        rigidbody = GetComponent<Rigidbody2D>();
-    }
-
     void Start()
     {
+        dead = false;
         currentSpeed = baseSpeed;
         cam = Camera.main;
         audioSources = GetComponents<AudioSource>();
@@ -106,7 +101,7 @@ public class PinBehaviour : MonoBehaviour
             }
         } else {
             // Set to original colors
-            sprite.color = UnityEngine.Color.white;
+            sprite.color = Color.white;
             
             invincibleCooldown = invincibleCooldown - Time.deltaTime;
 
